@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+dir=$(printf day%02d $1)
+
+mkdir "$dir"
+touch "$dir/input.txt"
+cat > "$dir/main.py" <<-EOF
+import os
+
+if __name__ == "__main__":
+    with open(os.path.join(os.path.dirname(__file__), "input.txt"), "r") as f:
+        data = f.read().strip()
+
+EOF
